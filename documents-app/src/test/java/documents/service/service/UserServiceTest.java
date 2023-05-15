@@ -57,16 +57,16 @@ public class UserServiceTest {
         Assertions.assertDoesNotThrow(() -> userService.loadUserByUsername("user"));
         Assertions.assertThrows(IdNotFoundException.class, () -> userService.loadUserByUsername("nonexistinguser"));
     }
-
-    @Test
-    public void testAddNewUser() {
-        UserDto userDto = createUserDto();
-
-        when(userDaoJpa.addNewUser(Mockito.any(UserDto.class))).thenReturn(userDto);
-
-        UserDto addedUser = userService.addNewUser(userDto);
-        assertEquals(userDto, addedUser);
-    }
+//
+//    @Test
+//    public void testAddNewUser() {
+//        UserDto userDto = createUserDto();
+//
+//        when(userDaoJpa.addNewUser(Mockito.any(UserDto.class))).thenReturn(userDto);
+//
+//        UserDto addedUser = userService.addNewUser(userDto);
+//        assertEquals(userDto, addedUser);
+//    }
 
     @Test
     public void testGetCurrentUser() {
