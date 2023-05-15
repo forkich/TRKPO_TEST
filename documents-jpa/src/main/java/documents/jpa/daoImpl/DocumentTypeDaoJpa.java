@@ -73,9 +73,11 @@ public class DocumentTypeDaoJpa implements DocumentTypeDao {
     }
 
     @Override
+    @Transactional
     public DocumentTypeDto modifyDocument(DocumentTypeDto documentTypeDto) {
         DocumentType documentType = documentTypeRepository.findById(documentTypeDto.getId()).orElseThrow(IdNotFoundException::new);
         documentType.setName(documentTypeDto.getName());
+        em.merge(documentType);
         return documentTypeParser.EtoDTO(documentType);
     }
 }
