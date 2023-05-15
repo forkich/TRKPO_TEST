@@ -1,0 +1,7 @@
+name: Release
+on [push, pull_request]:
+  workflow_run:
+    workflows: ["Run Tests"]
+    branches: [master]
+    types:
+      - completed
