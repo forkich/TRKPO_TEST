@@ -19,6 +19,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.print.Doc;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,7 +41,8 @@ public class DocumentDaoJpa implements DocumentDao {
 
     @Override
     public List<DocumentDto> getAllDocuments() {
-        return documentParser.fromList(documentRepository.findAll());
+        List<Document> list = documentRepository.findAll();
+        return documentParser.fromList(list);
     }
 
     // Pageable request

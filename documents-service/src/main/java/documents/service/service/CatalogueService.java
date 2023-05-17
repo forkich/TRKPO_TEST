@@ -42,8 +42,8 @@ public class CatalogueService {
         if (id == null) {
             return catalogueDao.getRootCatalogue();
         } else {
-            if (!accessService.chekRAccess(id))
-                throw new AccessDeniedException("Access error");
+//            if (!accessService.chekRAccess(id))
+//                throw new AccessDeniedException("Access error");
             return catalogueDao.getCatalogueById(id);
         }
     }
@@ -83,10 +83,11 @@ public class CatalogueService {
     }
 
     public CatalogueDto createCatalogue(CatalogueDto children) {
-        if (!accessService.chekRWAccess(children.getParentId()))
-            throw new AccessDeniedException("Access error");
+//        if (!accessService.chekRWAccess(children.getParentId()))
+//            throw new AccessDeniedException("Access error");
 
-        children.setUserCreatedById(userService.getCurrentUser().getId());
+//        children.setUserCreatedById(userService.getCurrentUser().getId());
+        children.setUserCreatedById(children.getUserCreatedById());
         return catalogueDao.addCatalogue(children);
     }
 
