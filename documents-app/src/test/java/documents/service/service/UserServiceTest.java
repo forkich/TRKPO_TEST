@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.client.ExpectedCount;
 
 import java.util.Optional;
@@ -42,6 +44,7 @@ public class UserServiceTest {
         userService = new UserService();
         userService.userRepository = userRepository;
         userService.userDaoJpa = userDaoJpa;
+        userService.passwordEncoder = new BCryptPasswordEncoder();
     }
 
     @Test
