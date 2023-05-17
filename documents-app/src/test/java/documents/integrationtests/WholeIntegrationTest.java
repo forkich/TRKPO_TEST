@@ -36,10 +36,10 @@ public class WholeIntegrationTest {
     private String adminPass = "password";
 
     private String newUserLogin = "login7";
-    private String newUserPass = "pass";
+    private String newUserPass = "passworddd";
 
     private String thirdUserLogin = "login8";
-    private String thirdUserPassword = "pass";
+    private String thirdUserPassword = "passworddd";
 
     private String NEW_TEST_CATALOGUE_IN_ROOT_FOLDER = "new_test_catalogue_in_root_folder";
 

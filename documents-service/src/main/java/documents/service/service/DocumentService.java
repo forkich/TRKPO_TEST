@@ -53,11 +53,11 @@ public class DocumentService {
     }
 
     public DocumentDto saveNewDocument(DocumentDto documentDto, ConcreteDocumentDto concreteDocumentDto) {
-        if (!accessService.chekRWAccess(documentDto.getParentId())) {
-            throw new AccessDeniedException("Access error");
-        }
-        documentDto.setUserCreatedById(userService.getCurrentUser().getId());
-        concreteDocumentDto.setUserModifiedBy(userService.getCurrentUser().getId());
+//        if (!accessService.chekRWAccess(documentDto.getParentId())) {
+//            throw new AccessDeniedException("Access error");
+//        }
+//        documentDto.setUserCreatedById(userService.getCurrentUser().getId());
+//        concreteDocumentDto.setUserModifiedBy(userService.getCurrentUser().getId());
         return documentDao.addNewDocument(documentDto, concreteDocumentDto);
     }
 

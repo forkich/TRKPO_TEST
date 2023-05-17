@@ -18,6 +18,7 @@ public interface DocumentRepository extends JpaRepository<Document, Long>,
             nativeQuery = true)
     List<Document> getChildrens(Long idd);
 
+    List<Document> findAll();
 
 
 
