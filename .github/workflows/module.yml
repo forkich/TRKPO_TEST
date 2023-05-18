@@ -29,7 +29,7 @@ jobs:
           distribution: 'corretto'
 
       - name: Unit_tests
-        run: mvn test -f pom.xml
+        run: mvn test
 
   integration:
     needs: unit
