@@ -16,7 +16,7 @@ jobs:
       - name: Build with Maven
         run: mvn clean install -B
       - name: Unit_tests
-        run: mvn test -Dtest=*Test.java
+        run: mvn test -f pom.xml
       - name: Integration_tests
         run: mvn verify -Dtest=*IT.java
 #        run: mvn clean package
