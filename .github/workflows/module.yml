@@ -11,7 +11,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'temurin'
+          distribution: 'corretto'
       - name: Build with Maven
         run: mvn clean install -B
   unit:
@@ -26,12 +26,13 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'temurin'
+          distribution: 'corretto'
 
       - name: Unit_tests
         run: mvn test -f pom.xml
 
   integration:
+    needs: unit
     runs-on: ubuntu-latest
 
     steps:
@@ -42,10 +43,10 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'temurin'
+          distribution: 'corretto'
 
       - name: Integration_tests
-        run: mvn test -Dtest="integrationtests/*"
-        working-directory: ./documents-app
+        run: mvn test -Dtest="documents-app/src/test/java/documents/integrationtests/*"
+#        working-directory: ./documents-app
 #        run: mvn clean package
 #        run: mvn --batch-mode --update-snapshots package
