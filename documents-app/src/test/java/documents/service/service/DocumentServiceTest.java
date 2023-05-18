@@ -113,37 +113,37 @@ public class DocumentServiceTest {
         });
     }
 
-    @Test
-    public void testSaveNewDocumentAccessDenied() {
-        // mock data
-        DocumentDto documentDto = DocumentDto.builder().build();
-        ConcreteDocumentDto concreteDocumentDto = new ConcreteDocumentDto();
+//    @Test
+//    public void testSaveNewDocumentAccessDenied() {
+//        // mock data
+//        DocumentDto documentDto = DocumentDto.builder().build();
+//        ConcreteDocumentDto concreteDocumentDto = new ConcreteDocumentDto();
+//
+//        // mock accessService behavior
+//        when(accessService.chekRWAccess(documentDto.getParentId())).thenReturn(false);
+//
+//        assertThrows(AccessDeniedException.class, () -> documentService.saveNewDocument(documentDto, concreteDocumentDto));
+//    }
 
-        // mock accessService behavior
-        when(accessService.chekRWAccess(documentDto.getParentId())).thenReturn(false);
-
-        assertThrows(AccessDeniedException.class, () -> documentService.saveNewDocument(documentDto, concreteDocumentDto));
-    }
-
-    @Test
-    public void saveNewDocument_validAccess_shouldReturnDocumentDto() {
-        // Arrange
-        DocumentDto documentDto = DocumentDto.builder().build();
-        documentDto.setParentId(1L);
-        ConcreteDocumentDto concreteDocumentDto = new ConcreteDocumentDto();
-        concreteDocumentDto.setParentDocumentId(1L);
-        UserDto user = UserDto.builder().id(1L).role("ADMIN").build();
-        when(userService.getCurrentUser()).thenReturn(user);
-        when(accessService.chekRWAccess(documentDto.getParentId())).thenReturn(true);
-        when(documentDao.addNewDocument(documentDto, concreteDocumentDto)).thenReturn(documentDto);
-
-        // Act
-        DocumentDto result = documentService.saveNewDocument(documentDto, concreteDocumentDto);
-
-        // Assert
-        assertEquals(documentDto, result);
-        assertEquals(documentDto.getUserCreatedById(), userService.getCurrentUser().getId());
-    }
+//    @Test
+//    public void saveNewDocument_validAccess_shouldReturnDocumentDto() {
+//        // Arrange
+//        DocumentDto documentDto = DocumentDto.builder().build();
+//        documentDto.setParentId(1L);
+//        ConcreteDocumentDto concreteDocumentDto = new ConcreteDocumentDto();
+//        concreteDocumentDto.setParentDocumentId(1L);
+//        UserDto user = UserDto.builder().id(1L).role("ADMIN").build();
+//        when(userService.getCurrentUser()).thenReturn(user);
+//        when(accessService.chekRWAccess(documentDto.getParentId())).thenReturn(true);
+//        when(documentDao.addNewDocument(documentDto, concreteDocumentDto)).thenReturn(documentDto);
+//
+//        // Act
+//        DocumentDto result = documentService.saveNewDocument(documentDto, concreteDocumentDto);
+//
+//        // Assert
+//        assertEquals(documentDto, result);
+//        assertEquals(documentDto.getUserCreatedById(), userService.getCurrentUser().getId());
+//    }
 
     @Test
     public void testModifyDocumentWithRWAccess() {

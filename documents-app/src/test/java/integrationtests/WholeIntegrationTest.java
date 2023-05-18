@@ -1,4 +1,4 @@
-package documents.integrationtests;
+package integrationtests;
 
 import documents.app.Application;
 import documents.dao.UserDao;

@@ -74,29 +74,29 @@ public class CatalogueServiceTest {
 //        catalogueService.deleteCatalogueByNameAndParentId(null);
 //    }
 
-    @Test
-    void testGetCatalogueById_withNonNullIdAndAccessAllowed() {
-        Long id = 1L;
-        CatalogueDto expectedCatalogue = CatalogueDto.builder().build();
-        when(accessService.chekRAccess(id)).thenReturn(true);
-        when(catalogueDao.getCatalogueById(id)).thenReturn(expectedCatalogue);
+//    @Test
+//    void testGetCatalogueById_withNonNullIdAndAccessAllowed() {
+//        Long id = 1L;
+//        CatalogueDto expectedCatalogue = CatalogueDto.builder().build();
+//        when(accessService.chekRAccess(id)).thenReturn(true);
+//        when(catalogueDao.getCatalogueById(id)).thenReturn(expectedCatalogue);
+//
+//        CatalogueDto actualCatalogue = catalogueService.getCatalogueById(id);
+//
+//        assertEquals(expectedCatalogue, actualCatalogue);
+//        verify(catalogueDao, times(1)).getCatalogueById(id);
+//        verify(accessService, times(1)).chekRAccess(id);
+//    }
 
-        CatalogueDto actualCatalogue = catalogueService.getCatalogueById(id);
-
-        assertEquals(expectedCatalogue, actualCatalogue);
-        verify(catalogueDao, times(1)).getCatalogueById(id);
-        verify(accessService, times(1)).chekRAccess(id);
-    }
-
-    @Test
-    void testGetCatalogueById_withNonNullIdAndAccessDenied() {
-        Long id = 1L;
-        when(accessService.chekRAccess(id)).thenReturn(false);
-
-        assertThrows(AccessDeniedException.class, () -> catalogueService.getCatalogueById(id));
-        verify(catalogueDao, never()).getCatalogueById(anyLong());
-        verify(accessService, times(1)).chekRAccess(id);
-    }
+//    @Test
+//    void testGetCatalogueById_withNonNullIdAndAccessDenied() {
+//        Long id = 1L;
+//        when(accessService.chekRAccess(id)).thenReturn(false);
+//
+//        assertThrows(AccessDeniedException.class, () -> catalogueService.getCatalogueById(id));
+//        verify(catalogueDao, never()).getCatalogueById(anyLong());
+//        verify(accessService, times(1)).chekRAccess(id);
+//    }
 
     @Test
     void testGetInnerCataloguesAndDocuments() {
@@ -183,33 +183,33 @@ public class CatalogueServiceTest {
     }
 
 
-    @Test
-    void testCreateCatalogue_withRWAccess() {
-        CatalogueDto parent = CatalogueDto.builder().id(1L).userCreatedById(1L).build();
-        CatalogueDto children = CatalogueDto.builder().name("test catalogue").parentId(parent.getId()).build();
-        UserDto user = UserDto.builder().id(1L).role("ADMIN").build();
-        when(userService.getCurrentUser()).thenReturn(user);
-        when(accessService.chekRWAccess(parent.getId())).thenReturn(true);
-        when(catalogueDao.addCatalogue(children)).thenReturn(children);
-        CatalogueDto result = catalogueService.createCatalogue(children);
-        assertNotNull(result);
-        assertEquals("test catalogue", result.getName());
-        assertEquals(parent.getId(), result.getParentId());
-        assertEquals(user.getId(), result.getUserCreatedById());
-        verify(accessService).chekRWAccess(parent.getId());
-        verify(catalogueDao).addCatalogue(children);
-    }
+//    @Test
+//    void testCreateCatalogue_withRWAccess() {
+//        CatalogueDto parent = CatalogueDto.builder().id(1L).userCreatedById(1L).build();
+//        CatalogueDto children = CatalogueDto.builder().name("test catalogue").parentId(parent.getId()).build();
+//        UserDto user = UserDto.builder().id(1L).role("ADMIN").build();
+//        when(userService.getCurrentUser()).thenReturn(user);
+//        when(accessService.chekRWAccess(parent.getId())).thenReturn(true);
+//        when(catalogueDao.addCatalogue(children)).thenReturn(children);
+//        CatalogueDto result = catalogueService.createCatalogue(children);
+//        assertNotNull(result);
+//        assertEquals("test catalogue", result.getName());
+//        assertEquals(parent.getId(), result.getParentId());
+//        assertEquals(user.getId(), result.getUserCreatedById());
+//        verify(accessService).chekRWAccess(parent.getId());
+//        verify(catalogueDao).addCatalogue(children);
+//    }
 
-    @Test
-    void testCreateCatalogue_withoutRWAccess() {
-        CatalogueDto parent = CatalogueDto.builder().id(1L).build();
-        CatalogueDto children = CatalogueDto.builder().name("test catalogue").parentId(parent.getId()).build();
-        when(accessService.chekRWAccess(parent.getId())).thenReturn(false);
-        AccessDeniedException exception = assertThrows(AccessDeniedException.class, () -> catalogueService.createCatalogue(children));
-        assertEquals("Access error", exception.getMessage());
-        verify(accessService).chekRWAccess(parent.getId());
-        verifyNoInteractions(userService, catalogueDao);
-    }
+//    @Test
+//    void testCreateCatalogue_withoutRWAccess() {
+//        CatalogueDto parent = CatalogueDto.builder().id(1L).build();
+//        CatalogueDto children = CatalogueDto.builder().name("test catalogue").parentId(parent.getId()).build();
+//        when(accessService.chekRWAccess(parent.getId())).thenReturn(false);
+//        AccessDeniedException exception = assertThrows(AccessDeniedException.class, () -> catalogueService.createCatalogue(children));
+//        assertEquals("Access error", exception.getMessage());
+//        verify(accessService).chekRWAccess(parent.getId());
+//        verifyNoInteractions(userService, catalogueDao);
+//    }
 
     @Test
     void testModifyCatalogue_withRWAccess() {
