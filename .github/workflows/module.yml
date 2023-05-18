@@ -29,7 +29,7 @@ jobs:
           distribution: 'corretto'
 
       - name: Unit_tests
-        run: mvn test -f pom.xml -Dtest="documents-app/src/test/java/documents/*"
+        run: mvn test -f pom.xml
 
   integration:
     needs: unit
@@ -46,7 +46,7 @@ jobs:
           distribution: 'corretto'
 
       - name: Integration_tests
-        run: mvn verify -Dtest="documents-app/src/test/java/integrationtests/*"
+        run: mvn failsafe:integration-test
 #        working-directory: ./documents-app
 #        run: mvn clean package
 #        run: mvn --batch-mode --update-snapshots package
