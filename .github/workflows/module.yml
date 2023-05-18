@@ -46,7 +46,7 @@ jobs:
           distribution: 'corretto'
 
       - name: Integration_tests
-        run: mvn integration-test -Dtest="documents-app/src/test/java/integrationtests/*"
+        run: mvn test -Dtest="documents-app/src/test/java/integrationtests/*"
 #        working-directory: ./documents-app
 #        run: mvn clean package
 #        run: mvn --batch-mode --update-snapshots package
