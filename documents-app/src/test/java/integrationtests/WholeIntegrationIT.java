@@ -1,7 +1,6 @@
 package integrationtests;
 
 import documents.app.Application;
-import documents.dao.UserDao;
 import documents.dto.files.catalogues.CatalogueDto;
 import documents.dto.files.documents.ConcreteDocumentDto;
 import documents.dto.files.documents.DocumentDto;
@@ -14,7 +13,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +20,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.mockito.Mockito.*;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class WholeIntegrationTest {
+public class WholeIntegrationIT {
 
 
     @Autowired
