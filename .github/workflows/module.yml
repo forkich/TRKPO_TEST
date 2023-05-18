@@ -16,8 +16,8 @@ jobs:
       - name: Build with Maven
         run: mvn clean install -B
       - name: Unit_tests
-        run: mvn test -f pom.xml
+        run: mvn test -f pom.xml -DtestSourceDirectory=src/test/java/documents
       - name: Integration_tests
-        run: mvn integration-test -f pom.xml
+        run: mvn integration-test -DtestSourceDirectory=src/test/java/documents/integrationtests
 #        run: mvn clean package
 #        run: mvn --batch-mode --update-snapshots package
