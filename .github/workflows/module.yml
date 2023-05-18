@@ -18,6 +18,6 @@ jobs:
       - name: Unit_tests
         run: mvn test -f pom.xml
       - name: Integration_tests
-        run: mvn verify -Dtest=*IT.java
+        run: mvn verify test
 #        run: mvn clean package
 #        run: mvn --batch-mode --update-snapshots package
