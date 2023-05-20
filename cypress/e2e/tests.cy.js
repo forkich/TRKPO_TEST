@@ -23,7 +23,7 @@ describe('Login Test', () => {
     cy.visit('http://localhost:3000');
   });
 
-  it('should display an error message with incorrect credentials', () => {
+  it('should display an error message 404 if incorrect credentials are entered', () => {
     cy.get('input[name="username"]').type('invalid-username');
     cy.get('input[name="password"]').type('invalid-password');
     cy.get('button[type="submit"]').click();
@@ -119,6 +119,30 @@ describe('Navigate from one page to another', () => {
   })
 })
 
+
+describe('Add new catalogue', () => {
+  it('should add new catalogue when user click on button CREATE', () => {
+    cy.visit('http://localhost:3000/catalogue');
+    // Fill in the login form
+    cy.get('input[name="username"]').type('login')
+    cy.get('input[name="password"]').type('password')
+
+    // Submit the login form
+    cy.get('button[type="submit"]').click()
+    // Click on the "Create" button to navigate to the create form
+    cy.contains("Create").click();
+
+    // // Fill in the input field with the desired name
+    cy.get('input[name="name"]').type("new-parent");
+    cy.get('input[name="parentId"]').type("2");
+    cy.get('input[name="userCreatedById"]').type("1");
+    //
+    // // Submit the form
+    cy.contains("Save").click({force: true});
+    cy.visit('http://localhost:3000/catalogue')
+  });
+});
+
 describe('Change user role', () => {
   beforeEach(() => {
     // Visit the login page before each test
@@ -144,8 +168,35 @@ describe('Change user role', () => {
   })
 })
 
-describe("Create User with ADMIN role", () => {
-  it("should create a new user with ADMIN role and display it in list of users", () => {
+describe('Export documents info', () => {
+  beforeEach(() => {
+    Cypress.config('chromePreferences', {
+      download: {
+        default_directory: 'cypress/downloads',
+      },
+    });
+  });
+
+  it('should download the list of all documents and read the downloaded file', () => {
+    cy.visit('http://localhost:3000/documents');
+    // Fill in the login form
+    cy.get('input[name="username"]').type('login')
+    cy.get('input[name="password"]').type('password')
+
+    // Submit the login form
+    cy.get('button[type="submit"]').click()
+
+    cy.get('button.MuiButton-root[aria-label="Export"]').click();
+
+    //read file
+    cy.readFile('cypress/downloads/documents.csv').then((fileContent) => {
+      expect(fileContent).to.contain('DEFAULT');
+    });
+  });
+});
+
+describe("Create User with USER role", () => {
+  it("should create a new user with USER role and display it in list of users", () => {
     cy.visit("http://localhost:3000/user");
 
     // Fill in the login form
