@@ -1,4 +1,5 @@
-package documents.integrationtests;
+package integrationtests;
+
 
 import documents.app.Application;
 import org.junit.Assert;
@@ -13,7 +14,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class AccessRestTest {
+public class DocumentTypeRestIT {
+
     @Autowired
     private TestRestTemplate template;
 
@@ -21,10 +23,9 @@ public class AccessRestTest {
     private String adminPass = "password";
 
     @Test
-    public void check_access() {
+    public void get_types_test() {
         ResponseEntity<Object> response = template.withBasicAuth(adminLogin, adminPass)
-                .getForEntity("/access/1", Object.class);
+                .getForEntity("/type", Object.class);
         Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
-
 }

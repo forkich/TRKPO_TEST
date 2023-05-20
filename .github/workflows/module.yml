@@ -1,19 +1,52 @@
-name: Java CI
+name: Module and Integration tests
 
 on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'temurin'
+          distribution: 'corretto'
       - name: Build with Maven
-        run: mvn test -f pom.xml
+        run: mvn clean install -B
+  unit:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'corretto'
+
+      - name: Unit_tests
+        run: mvn test
+
+  integration:
+    needs: unit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'corretto'
+
+      - name: Integration_tests
+        run: mvn integration-test
+#        working-directory: ./documents-app
 #        run: mvn clean package
 #        run: mvn --batch-mode --update-snapshots package

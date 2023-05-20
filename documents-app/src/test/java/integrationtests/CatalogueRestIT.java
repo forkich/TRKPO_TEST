@@ -1,4 +1,4 @@
-package documents.integrationtests;
+package integrationtests;
 
 import documents.app.Application;
 import documents.dto.files.catalogues.CatalogueDto;
@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class CatalogueRestTest {
+public class CatalogueRestIT {
     @Autowired
     private TestRestTemplate template;
 
