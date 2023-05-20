@@ -19,9 +19,9 @@ export const CatalogueListCreate = (props: CreateProps) => (
     <Create {...props}>
         <SimpleForm>
             <TextInput source="name" required />
-            <NumberInput source="parentId" />
+            <NumberInput source="parentId" required/>
             {/*<DateField source="createdTime" showTime />*/}
-            <NumberInput source="userCreatedById" />
+            <NumberInput source="userCreatedById" required/>
             <SelectField source="typeOfFile" choices={[{ id: 'CATALOGUE', name: 'CATALOGUE' }]} />
         </SimpleForm>
     </Create>
