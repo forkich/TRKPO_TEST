@@ -46,7 +46,7 @@ jobs:
           distribution: 'corretto'
 
       - name: Integration_tests
-        run: mvn integration-test
+        run: mvn -f pom.xml test
 
   cypress-run:
     needs: integration
