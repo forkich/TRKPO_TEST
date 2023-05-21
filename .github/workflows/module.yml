@@ -29,7 +29,9 @@ jobs:
           distribution: 'corretto'
 
       - name: Unit_tests
-        run: mvn test
+        run: |
+          mvn package --batch-mode
+          mvn test
         working-directory: documents-app/src/test/java/documents/jpa
 
 
