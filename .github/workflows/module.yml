@@ -29,7 +29,7 @@ jobs:
           distribution: 'corretto'
 
       - name: Unit_tests
-        run: mvn test -Dtest="documents/jpa/*" -f pom.xml
+        run: mvn -f pom.xml -pl documents-app clean test
 #        working-directory: ./documents-app
 
 
