@@ -31,8 +31,8 @@ jobs:
       - name: Unit_tests
         run: |
           mvn package --batch-mode
-          mvn test -f pom.xml
-        working-directory: documents-app/src/test/java/documents/jpa
+          mvn test -f pom.xml -Dtest="documents/jpa/*"
+        working-directory: ./documents-app
 
 
   integration:
