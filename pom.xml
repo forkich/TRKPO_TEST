@@ -52,7 +52,7 @@
                     <configuration>
                         <testSourceDirectory>src/test/java</testSourceDirectory>
                         <includes>
-                            <include>**/documents/jpa/**/*.java</include>
+                            <include>**/documents/**/*.java</include>
                         </includes>
                     </configuration>
                 </plugin>
@@ -61,7 +61,10 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>3.0.0-M5</version>
                     <configuration>
-                        <testSourceDirectory>documents-app/src/test/java/integrationtests</testSourceDirectory>
+                        <testSourceDirectory>src/test/java</testSourceDirectory>
+                        <includes>
+                            <include>**/integrationtests/**/*.java</include>
+                        </includes>
                     </configuration>
             </plugin>
                 <plugin>
