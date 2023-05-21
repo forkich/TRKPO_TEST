@@ -50,7 +50,10 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M5</version>
                     <configuration>
-                        <testSourceDirectory>documents-app/src/test/java/documents/jpa</testSourceDirectory>
+                        <testSourceDirectory>src/test/java</testSourceDirectory>
+                        <includes>
+                            <include>**/documents/jpa/**/*.java</include>
+                        </includes>
                     </configuration>
                 </plugin>
                 <plugin>
