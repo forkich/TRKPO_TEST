@@ -246,3 +246,42 @@ describe("Create User with incorrect credentials", () => {
     cy.get('svg[data-testid="SaveIcon"]').click({force: true});
   });
 });
+
+describe('Swagger POST API', () => {
+  it('should successfully create a new document using post method from swagger', () => {
+    cy.request({
+      method: 'POST',
+      url: 'http://localhost:8080/documents',
+      body: {
+        concreteDocument: {
+          description: 'This is another document',
+          name: 'Tested document 22.05.2023 00:33',
+          userModifiedBy: 13
+        },
+        documentType: 'jpg',
+        parentId: 3,
+        userCreatedById: 13
+      },
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((response) => {
+      // Verify the response status code
+      expect(response.status).to.equal(200);
+      //open the application to make sure that document was created
+      cy.visit("http://localhost:3000/documents");
+
+      // Autorization
+      cy.get('input[name="username"]').type('login')
+      cy.get('input[name="password"]').type('password')
+      cy.get('button[type="submit"]').click();
+
+
+      //scroll down to show new document, located at the bottom of the page
+      cy.get('body').then(() => {
+        cy.scrollTo('bottom', { duration: 1000 });
+      });
+    });
+  });
+});
+
