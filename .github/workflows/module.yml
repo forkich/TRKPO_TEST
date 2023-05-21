@@ -31,8 +31,8 @@ jobs:
       - name: Unit_tests
         run: |
           mvn package --batch-mode
-          mvn test -f pom.xml -Dtest="documents/jpa/*"
-        working-directory: ./documents-app
+          mvn test -Dtest="documents/jpa/*"
+        working-directory: ./TRKPO_TEST
 
 
   integration:
