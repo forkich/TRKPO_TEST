@@ -29,9 +29,7 @@ jobs:
           distribution: 'corretto'
 
       - name: Unit_tests
-        run: |
-          mvn package --batch-mode
-          mvn test -Dtest="documents/jpa/*"
+        run: mvn test -Dtest="documents/jpa/*"
         working-directory: ./TRKPO_TEST
 
 
