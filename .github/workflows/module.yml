@@ -29,7 +29,8 @@ jobs:
           distribution: 'corretto'
 
       - name: Unit_tests
-        run: mvn test -Dtest="documents/jpa/*"
+        run: mvn test
+        working-directory: documents-app/src/test/java/documents/jpa
 
 
   integration:
