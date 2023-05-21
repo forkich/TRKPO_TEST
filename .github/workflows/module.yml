@@ -29,8 +29,8 @@ jobs:
           distribution: 'corretto'
 
       - name: Unit_tests
-        run: mvn test -Dtest="documents/jpa/*"
-        working-directory: ./TRKPO_TEST
+        run: mvn test -Dtest="documents/jpa/*" -f pom.xml
+        working-directory: ./documents-app
 
 
   integration:
