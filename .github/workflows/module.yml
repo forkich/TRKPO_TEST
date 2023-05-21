@@ -30,7 +30,7 @@ jobs:
 
       - name: Unit_tests
         run: mvn test -Dtest="documents/jpa/*" -f pom.xml
-        working-directory: ./documents-app
+#        working-directory: ./documents-app
 
 
   integration:
