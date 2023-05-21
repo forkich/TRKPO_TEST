@@ -15,7 +15,7 @@ jobs:
       - name: Build with Maven
         run: mvn clean install -B
   unit:
-    needs: build
+#    needs: build
     runs-on: ubuntu-latest
 
     steps:
