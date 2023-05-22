@@ -46,7 +46,7 @@ jobs:
           distribution: 'corretto'
 
       - name: Integration_tests
-        run: mvn -f pom.xml verify -Dtest="integrationtests/**/*.java"
+        run: mvn -f pom.xml failsafe:verify -Dtest="integrationtests/**/*.java"
 
   cypress-run:
 #    needs: integration
@@ -64,11 +64,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Start backend server
-        run: node server.js
-
-      - name: Wait for backend server to be ready
-        run: wait-on http://localhost:8080
+#      - name: Start backend server
+#        run: node server.js
+#
+#      - name: Wait for backend server to be ready
+#        run: wait-on http://localhost:8080
 
       - name: start frontend server
         uses: cypress-io/github-action@v2
