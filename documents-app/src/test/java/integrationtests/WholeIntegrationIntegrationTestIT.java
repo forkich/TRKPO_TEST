@@ -22,7 +22,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class WholeIntegrationIntegrationTest {
+public class WholeIntegrationIntegrationTestIT {
 
 
     @Autowired
