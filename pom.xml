@@ -31,6 +31,12 @@
                                 </goals>
                             </execution>
                         </executions>
+                        <configuration>
+                            <includes>
+                                <include>integrationtests/**/*.java</include>
+                            </includes>
+                        </configuration>
+
                     </plugin>
                 </plugins>
             </build>
