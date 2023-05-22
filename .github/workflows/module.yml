@@ -32,7 +32,7 @@ jobs:
         run: mvn -f pom.xml test
 
   integration:
-    needs: unit
+#    needs: unit
     runs-on: ubuntu-latest
 
     steps:
