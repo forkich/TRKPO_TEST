@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class CatalogueRestIntegrationTestIT {
+public class CatalogueRestIntegrationTest {
     @Autowired
     private TestRestTemplate template;
 

@@ -43,10 +43,10 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'corretto'
+#          distribution: 'corretto'
 
       - name: Integration_tests
-        run: mvn -f pom.xml verify -Pintegration-tests
+        run: mvn verify -Pintegration-tests
 
 #  cypress-run:
 ##    needs: integration
