@@ -53,7 +53,7 @@ jobs:
         run: mvn install
 
       - name: Integration_tests
-        run: mvn verify -pl documents-app -Dit.test=**/integrationtests/**/*IT.java
+        run: mvn verify -Dit.test=**/integrationtests/**/*IT.java
 
 #  cypress-run:
 ##    needs: integration
