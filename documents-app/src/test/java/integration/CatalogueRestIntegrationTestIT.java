@@ -1,4 +1,4 @@
-package integrationtests;
+package integration;
 
 import documents.app.Application;
 import documents.dto.files.catalogues.CatalogueDto;

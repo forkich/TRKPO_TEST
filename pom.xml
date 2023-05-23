@@ -32,7 +32,7 @@
 <!--                        </executions>-->
 <!--                        <configuration>-->
 <!--                            <includes>-->
-<!--                                <include>integrationtests/**/*IT.java</include>-->
+<!--                                <include>integration/**/*IT.java</include>-->
 <!--                            </includes>-->
 <!--                        </configuration>-->
 
@@ -82,7 +82,7 @@
                     <configuration>
                         <testSourceDirectory>src/test/java/integrationtests</testSourceDirectory>
 <!--                        <includes>-->
-<!--                            <include>integrationtests/**/*IT.java</include>-->
+<!--                            <include>integration/**/*IT.java</include>-->
 <!--                        </includes>-->
                     </configuration>
                 </plugin>
