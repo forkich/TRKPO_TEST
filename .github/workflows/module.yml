@@ -32,7 +32,7 @@ jobs:
 #        run: mvn -f pom.xml test
 
   integration:
-#    needs: unit
+    needs: build
     runs-on: ubuntu-latest
 
 #    defaults:
@@ -49,8 +49,8 @@ jobs:
           java-version: '17'
           distribution: 'corretto'
 
-      - name: Maven
-        run: mvn install
+#      - name: Maven
+#        run: mvn install
 
       - name: Integration_tests
         run: mvn -f pom.xml verify -Dtest=AccessRestIntegrationTestIT.java
