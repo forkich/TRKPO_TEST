@@ -89,9 +89,10 @@
                         </execution>
                     </executions>
                     <configuration>
-                        <includes>
-                            <include>integrationtests/**/*IT.java</include>
-                        </includes>
+                        <testSourceDirectory>src/test/java/integrationtests</testSourceDirectory>
+<!--                        <includes>-->
+<!--                            <include>integrationtests/**/*IT.java</include>-->
+<!--                        </includes>-->
                     </configuration>
                 </plugin>
 

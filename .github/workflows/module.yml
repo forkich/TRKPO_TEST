@@ -35,9 +35,9 @@ jobs:
 #    needs: unit
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: documents-app
+#    defaults:
+#      run:
+#        working-directory: documents-app
 
     steps:
       - name: Get repository code
@@ -47,10 +47,13 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'corretto'
+#          distribution: 'corretto'
+
+      - name: Maven
+        run: mvn install
 
       - name: Integration_tests
-        run: mvn verify
+        run: mvn verify -pl documents-app -Dit.test=**/integrationtests/**/*IT.java
 
 #  cypress-run:
 ##    needs: integration
