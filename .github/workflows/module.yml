@@ -67,24 +67,20 @@ jobs:
           sudo apt-get install -y docker-compose
 
       - name: Build and Run Docker Compose
-        run: |
-          docker-compose up -d
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Start backend server
-        run: node server.js
+        run: docker-compose up -d
 
       - name: Wait for backend server to be ready
         run: wait-on http://localhost:8080
+
+      - name: Install dependencies
+        run: npm install
 
       - name: start frontend server
         uses: cypress-io/github-action@v2
         with:
           start: npm start # Запускает ваше приложение
           wait-on: 'http://localhost:3000' # URL вашего приложения
-          wait-on-timeout: 120 # Время ожидания загрузки вашего приложения
+          wait-on-timeout: 60 # Время ожидания загрузки вашего приложения
 
       - name: Run e2e tests
         run: npx cypress open
