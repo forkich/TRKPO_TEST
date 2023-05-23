@@ -52,6 +52,12 @@ jobs:
 #    needs: integration
     runs-on: ubuntu-latest
 
+#    services:
+#      backend:
+#        image:
+#        ports:
+#          - 8080:8080
+
     steps:
       - name: Get repository code
         uses: actions/checkout@v3
@@ -69,8 +75,8 @@ jobs:
       - name: Build and Run Docker Compose
         run: docker-compose up -d
 
-      - name: Wait for backend server to be ready
-        run: wait-on http://localhost:8080
+#      - name: Wait for Backend Server to Start
+#        run: sleep 10
 
       - name: Install dependencies
         run: npm install
