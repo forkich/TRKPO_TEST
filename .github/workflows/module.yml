@@ -48,37 +48,46 @@ jobs:
       - name: Integration_tests
         run: mvn verify -Pintegration-tests
 
-#  cypress-run:
-##    needs: integration
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - name: Get repository code
-#        uses: actions/checkout@v3
-#
-#      - name: Set up Node.js
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: 18
-#
-#      - name: Install dependencies
-#        run: npm install
-#
-##      - name: Start backend server
-##        run: node server.js
-##
-##      - name: Wait for backend server to be ready
-##        run: wait-on http://localhost:8080
-#
-#      - name: start frontend server
-#        uses: cypress-io/github-action@v2
-#        with:
-#          start: npm start # Запускает ваше приложение
-#          wait-on: 'http://localhost:3000' # URL вашего приложения
-#          wait-on-timeout: 120 # Время ожидания загрузки вашего приложения
-#
-#      - name: Run e2e tests
-#        run: npx cypress open
+  cypress-run:
+#    needs: integration
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install docker compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Build and Run Docker Compose
+        run: |
+          docker-compose up -d
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start backend server
+        run: node server.js
+
+      - name: Wait for backend server to be ready
+        run: wait-on http://localhost:8080
+
+      - name: start frontend server
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm start # Запускает ваше приложение
+          wait-on: 'http://localhost:3000' # URL вашего приложения
+          wait-on-timeout: 120 # Время ожидания загрузки вашего приложения
+
+      - name: Run e2e tests
+        run: npx cypress open
 
 #        working-directory: ./documents-app
 #        run: mvn clean package
