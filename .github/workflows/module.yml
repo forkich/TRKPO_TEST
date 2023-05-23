@@ -79,12 +79,17 @@ jobs:
 #        run: sleep 10
 
       - name: Install dependencies
-        uses: cypress-io/github-action@v2
         run: |
           npm install
-          npm start &
+#          npm start &
 
-#      - name: start frontend server
+      - name: start front
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm start
+          wait-on: 'http://localhost:3000'
+
+      #      - name: start frontend server
 #        uses: cypress-io/github-action@v2
 #        with:
 #          start: npm start # Запускает ваше приложение
