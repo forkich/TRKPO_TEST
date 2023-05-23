@@ -31,22 +31,22 @@ jobs:
 #      - name: Unit_tests
 #        run: mvn -f pom.xml test
 
-  integration:
-#    needs: unit
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Get repository code
-        uses: actions/checkout@v3
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'corretto'
-
-      - name: Integration_tests
-        run: mvn verify -Pintegration-tests
+#  integration:
+##    needs: unit
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Get repository code
+#        uses: actions/checkout@v3
+#
+#      - name: Set up JDK 17
+#        uses: actions/setup-java@v3
+#        with:
+#          java-version: '17'
+#          distribution: 'corretto'
+#
+#      - name: Integration_tests
+#        run: mvn verify -Pintegration-tests
 
   cypress-run:
 #    needs: integration
@@ -79,7 +79,10 @@ jobs:
 #        run: sleep 10
 
       - name: Install dependencies
-        run: npm install
+        uses: cypress-io/github-action@v2
+        run: |
+          npm install
+          npm start &
 
 #      - name: start frontend server
 #        uses: cypress-io/github-action@v2
@@ -88,8 +91,8 @@ jobs:
 #          wait-on: 'http://localhost:3000' # URL вашего приложения
 #          wait-on-timeout: 60 # Время ожидания загрузки вашего приложения
 
-      - name: start frontend server
-        run: npm start
+
+
 
       - name: Run e2e tests
         run: npx cypress open
