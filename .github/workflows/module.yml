@@ -98,7 +98,8 @@ jobs:
 #          wait-on-timeout: 60 # Время ожидания загрузки вашего приложения
 
 
-
+      - name: Install Cypress
+        run: npm install cypress
 
       - name: Run e2e tests
         run: npx cypress open
