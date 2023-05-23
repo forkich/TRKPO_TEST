@@ -37,7 +37,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: documents-app/src/test/java/integrationtests
+        working-directory: documents-app
 
     steps:
       - name: Get repository code
@@ -50,7 +50,7 @@ jobs:
           distribution: 'corretto'
 
       - name: Integration_tests
-        run: mvn -f pom.xml verify
+        run: mvn verify
 
 #  cypress-run:
 ##    needs: integration
