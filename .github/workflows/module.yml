@@ -79,6 +79,7 @@ jobs:
 #        run: sleep 10
 
       - name: Install dependencies
+        working-directory: my-admin
         run: |
           npm install
           npm start &
