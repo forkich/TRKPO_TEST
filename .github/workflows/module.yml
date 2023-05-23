@@ -103,10 +103,3 @@ jobs:
 
       - name: cypress run
         uses: cypress-io/github-action@v3
-
-      - name: Run e2e tests
-        run: npx cypress open
-
-#        working-directory: ./documents-app
-#        run: mvn clean package
-#        run: mvn --batch-mode --update-snapshots package
