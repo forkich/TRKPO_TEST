@@ -79,25 +79,40 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
                     <version>3.0.0-M5</version>
+                    <executions>
+                        <execution>
+                            <phase>integration-test</phase>
+                            <goals>
+                                <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                     <configuration>
-                        <testSourceDirectory>src/test/java/integrationtests</testSourceDirectory>
-<!--                        <includes>-->
-<!--                            <include>integration/**/*IT.java</include>-->
-<!--                        </includes>-->
+                        <testSourceDirectory>src/test/java</testSourceDirectory>
+                        <includes>
+                            <include>**/integration/**/*.java</include>
+                        </includes>
                     </configuration>
                 </plugin>
 
-<!--                <plugin>-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-surefire-plugin</artifactId>-->
-<!--                    <version>3.0.0-M5</version>-->
-<!--                    <configuration>-->
-<!--                        <testSourceDirectory>src/test/java</testSourceDirectory>-->
-<!--                        <includes>-->
-<!--                            <include>**/documents/**/*.java</include>-->
-<!--                        </includes>-->
-<!--                    </configuration>-->
-<!--                </plugin>-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M5</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <testSourceDirectory>src/test/java</testSourceDirectory>
+                        <includes>
+                            <include>**/documents/jpa/**/*.java</include>
+                        </includes>
+                    </configuration>
+                </plugin>
 
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
