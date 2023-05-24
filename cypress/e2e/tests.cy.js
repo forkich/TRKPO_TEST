@@ -110,4 +110,3 @@ describe('Swagger POST API', () => {
       enterCredentials('invalid-login', 'invalid-password')
     });
   });
-});
