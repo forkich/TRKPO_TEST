@@ -3,6 +3,7 @@ name: Module and Integration tests
 on: [push]
 
 jobs:
+#  BUILD
   build:
     runs-on: ubuntu-latest
     steps:
@@ -15,7 +16,8 @@ jobs:
       - name: Build with Maven
         run: mvn clean install -B
 
-  unit:
+#RUN UNIT TESTS
+  UNIT_TESTS:
     needs: build
     runs-on: ubuntu-latest
 
@@ -32,13 +34,11 @@ jobs:
       - name: Unit_tests
         run: mvn -f pom.xml test
 
-  integration:
-    needs: build
-    runs-on: ubuntu-latest
 
-#    defaults:
-#      run:
-#        working-directory: documents-app
+#RUN INTEGRATION TESTS
+  INTEGRATION_TESTS:
+    needs: unit
+    runs-on: ubuntu-latest
 
     steps:
       - name: Get repository code
@@ -50,18 +50,17 @@ jobs:
           java-version: '17'
           distribution: 'corretto'
 
+      - name: Maven install
+        run: mvn install
+
       - name: Integration_tests
         run: mvn -f pom.xml verify
 
-  cypress-run:
+
+#RUN E2E TESTS
+  E2E_TESTS:
     needs: integration
     runs-on: ubuntu-latest
-
-    services:
-      backend:
-        image: postgres 13.3
-        ports:
-          - 8080:8080
 
     steps:
       - name: Get repository code
@@ -80,28 +79,11 @@ jobs:
       - name: Build and Run Docker Compose
         run: docker-compose up -d
 
-#      - name: Wait for Backend Server to Start
-#        run: sleep 10
-
       - name: Install dependencies
         working-directory: my-admin
         run: |
           npm install
           npm start &
-
-#      - name: start front
-#        uses: cypress-io/github-action@v2
-#        with:
-#          start: npm start
-#          wait-on: 'http://localhost:3000'
-
-      #      - name: start frontend server
-#        uses: cypress-io/github-action@v2
-#        with:
-#          start: npm start # Запускает ваше приложение
-#          wait-on: 'http://localhost:3000' # URL вашего приложения
-#          wait-on-timeout: 60 # Время ожидания загрузки вашего приложения
-
 
       - name: Install Cypress
         run: npm install cypress
