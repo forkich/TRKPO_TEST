@@ -14,7 +14,7 @@ describe('Login Test', () => {
   });
 
   it('should log in in with correct credentials', () => {
-      cy.visit(url);
+      enterCredentials('invalid-login', 'invalid-password')
   });
 });
 
@@ -31,6 +31,7 @@ describe('Login Test', () => {
 describe('Add new type', () => {
   it('should add new type when user click on button CREATE', () => {
       cy.visit(url);
+      enterCredentials('invalid-login', 'invalid-password')
   });
 });
 
