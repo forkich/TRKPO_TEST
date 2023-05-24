@@ -111,7 +111,6 @@ describe("Create User with incorrect credentials", () => {
 
 describe('Swagger POST API', () => {
   it('should successfully create a new document using post method from swagger', () => {
-      //open the application to make sure that document was created
       cy.visit(url);
       enterCredentials('invalid-login', 'invalid-password')
     });
