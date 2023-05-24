@@ -109,7 +109,7 @@
                     <configuration>
                         <testSourceDirectory>src/test/java</testSourceDirectory>
                         <includes>
-                            <include>**/documents/jpa/**/*.java</include>
+                            <include>**/documents/**/*.java</include>
                         </includes>
                     </configuration>
                 </plugin>
