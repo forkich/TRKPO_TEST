@@ -44,23 +44,23 @@ public class DocumentTypeDaoJpaTest {
         MockitoAnnotations.openMocks(this);
     }
 
-//    @Test
-//    void testGetAllDocumentTypes() {
-//        // Arrange
-//        List<DocumentType> documentTypes = Arrays.asList(
-//                new DocumentType(1L, "type1"),
-//                new DocumentType(2L, "type2")
-//        );
-//        when(documentTypeRepository.findAll()).thenReturn(documentTypes);
-//
-//        // Act
-//        List<DocumentTypeDto> result = documentTypeDaoJpa.getAllDocumentTypes();
-//
-//        // Assert
-//        assertEquals(2, result.size());
-//        assertEquals("type1", result.get(0).getName());
-//        assertEquals("type2", result.get(1).getName());
-//    }
+    @Test
+    void testGetAllDocumentTypes() {
+        // Arrange
+        List<DocumentType> documentTypes = Arrays.asList(
+                new DocumentType(1L, "type1"),
+                new DocumentType(2L, "type2")
+        );
+        when(documentTypeRepository.findAll()).thenReturn(documentTypes);
+
+        // Act
+        List<DocumentTypeDto> result = documentTypeDaoJpa.getAllDocumentTypes();
+
+        // Assert
+        assertEquals(2, result.size());
+        assertEquals("type1", result.get(0).getName());
+        assertEquals("type2", result.get(1).getName());
+    }
 
     @Test
     void testDeleteDocumentType() {
