@@ -108,9 +108,9 @@
                     </executions>
                     <configuration>
                         <testSourceDirectory>src/test/java</testSourceDirectory>
-                        <includes>
-                            <include>**/documents/**/*.java</include>
-                        </includes>
+<!--                        <includes>-->
+<!--                            <include>**/documents/**/*.java</include>-->
+<!--                        </includes>-->
                     </configuration>
                 </plugin>
 
