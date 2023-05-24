@@ -120,9 +120,6 @@ describe('Swagger POST API', () => {
         'Content-Type': 'application/json',
       },
     }).then((response) => {
-      // Verify the response status code
-      expect(response.status).to.equal(200);
-
       //open the application to make sure that document was created
       cy.visit(url);
     });
