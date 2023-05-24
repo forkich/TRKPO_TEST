@@ -87,7 +87,6 @@ describe('Export documents info', () => {
      cy.visit(url);
     });
   });
-});
 
 describe("Create User with USER role", () => {
   it("should create a new user with USER role and display it in list of users", () => {
