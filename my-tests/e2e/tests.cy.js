@@ -99,34 +99,3 @@ describe("Create User with incorrect credentials", () => {
       cy.visit(url);
   });
 });
-
-//describe('Swagger POST API', () => {
-//  it('should successfully create a new document using post method from swagger', () => {
-//    cy.request({
-//      method: 'POST',
-//      url: 'http://localhost:8080/documents',
-//      body: {
-//        concreteDocument: {
-//          description: 'This is another document',
-//          name: 'Tested document 22.05.2023 00:33',
-//          userModifiedBy: 13
-//        },
-//        documentType: 'jpg',
-//        parentId: 3,
-//        userCreatedById: 13
-//      },
-//      headers: {
-//        'Content-Type': 'application/json',
-//      },
-//    }).then((response) => {
-//      // Verify the response status code
-//      expect(response.status).to.equal(200);
-//
-//      //open the application to make sure that document was created
-//      cy.visit(documentsPage);
-//      enterCredentials('login', 'password')
-//      scrollDownThePage();
-//    });
-//  });
-//});
-
