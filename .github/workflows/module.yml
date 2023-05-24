@@ -37,7 +37,7 @@ jobs:
 
 #RUN INTEGRATION TESTS
   INTEGRATION_TESTS:
-    needs: unit
+    needs: UNIT_TESTS
     runs-on: ubuntu-latest
 
     steps:
@@ -59,7 +59,7 @@ jobs:
 
 #RUN E2E TESTS
   E2E_TESTS:
-    needs: integration
+    needs: INTEGRATION_TESTS
     runs-on: ubuntu-latest
 
     steps:
