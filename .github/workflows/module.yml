@@ -32,7 +32,7 @@ jobs:
           distribution: 'corretto'
 
       - name: Unit_tests
-        run: mvn -f pom.xml test -DtestInclude=**/documents/jpa/**/*Test.java
+        run: mvn -f pom.xml test -Dtest=**/documents/jpa/**/*.java
 
 
 #RUN INTEGRATION TESTS
